@@ -1,4 +1,4 @@
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLIBaseOptions {
     #[clap(long = "game", default_value = ".", help = "Sets the game folder used for operations")]
@@ -7,7 +7,7 @@ pub(crate) struct CLIBaseOptions {
     pub(crate) subcommand: CLISubcommand
 }
 
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) enum CLISubcommand {
     #[clap(name = "list", about = "List all the mods that the tool knows about")]
@@ -22,29 +22,29 @@ pub(crate) enum CLISubcommand {
     Update(CLISubUpdateOptions),
 }
 
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(name = "list", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubListOptions {}
 
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(name = "outdated", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubOutdatedOptions {}
 
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(name = "install", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubInstallOptions {
     #[clap(help = "The mods to uninstall")]
     pub(crate) mods: Vec<String>
 }
 
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(name = "uninstall", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubUninstallOptions {
     #[clap(help = "The mods to uninstall")]
     pub(crate) mods: Vec<String>
 }
 
-#[derive(Clap)]
+#[derive(Clap, Clone)]
 #[clap(name = "update", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubUpdateOptions {
     #[clap(help = "The mods to uninstall", min_values = 0)]

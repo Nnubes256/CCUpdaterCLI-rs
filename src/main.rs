@@ -10,16 +10,18 @@ use cmd::CLISubcommand;
 
 
 fn main() {
-    let opts = CLIBaseOptions::parse();
+    let top_args = CLIBaseOptions::parse();
 
-    println!("Game base path has been set to: {}", opts.game);
+    println!("Game base path has been set to: {}", top_args.game);
 
-    let result: i32 = match opts.subcommand {
-        CLISubcommand::Install(args) => features::install::run(args),
-        CLISubcommand::Uninstall(args) => features::uninstall::run(args),
-        CLISubcommand::Update(args) => features::update::run(args),
-        CLISubcommand::List(args) => features::list::run(args),
-        CLISubcommand::Outdated(args) => features::outdated::run(args)
+    let passed_args = top_args.clone();
+
+    let result: i32 = match top_args.subcommand {
+        CLISubcommand::Install(args) => features::install::run(passed_args, args),
+        CLISubcommand::Uninstall(args) => features::uninstall::run(passed_args, args),
+        CLISubcommand::Update(args) => features::update::run(passed_args, args),
+        CLISubcommand::List(args) => features::list::run(passed_args, args),
+        CLISubcommand::Outdated(args) => features::outdated::run(passed_args, args)
     };
 
     process::exit(result);
