@@ -1,7 +1,8 @@
 [package]
-name = "CCUpdaterCLI-rs"
+name = "ccupdater_cli_rs"
 version = "0.1.0"
-authors = ["Ignacio <nnubes256@gmail.com>"]
+authors = ["CCDirectLink Contributors"]
 license = "MIT"
 
 [dependencies]
+clap = { version = "3.0.0-beta.1", git = "https://github.com/clap-rs/clap.git"}
