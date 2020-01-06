@@ -22,7 +22,7 @@ pub enum Subcommand {
     Outdated(SubOutdatedOptions),
     #[clap(name = "install", about = "Install one or more mods")]
     Install(SubInstallOptions),
-    #[clap(name = "uninstall", about = "Uninstall one or more mods")]
+    #[clap(name = "uninstall", raw(aliases = r#"&["remove"]"#), about = "Uninstall one or more mods")]
     Uninstall(SubUninstallOptions),
     #[clap(name = "update", about = "Update one or more mods")]
     Update(SubUpdateOptions),
