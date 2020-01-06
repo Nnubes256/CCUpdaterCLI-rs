@@ -1,7 +1,7 @@
-use cmd::CLIBaseOptions;
-use cmd::CLISubUpdateOptions;
+use options::CommonOptions;
+use options::SubUpdateOptions;
 
-pub(crate) fn run(top_args: CLIBaseOptions, sub_args: CLISubUpdateOptions) -> i32 {
+pub fn run(common_options: CommonOptions, options: SubUpdateOptions) -> i32 {
     println!("Here goes update logic");
     0
 }

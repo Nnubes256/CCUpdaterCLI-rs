@@ -1,7 +1,7 @@
-use cmd::CLIBaseOptions;
-use cmd::CLISubOutdatedOptions;
+use options::CommonOptions;
+use options::SubOutdatedOptions;
 
-pub(crate) fn run(top_args: CLIBaseOptions, sub_args: CLISubOutdatedOptions) -> i32 {
+pub fn run(common_options: CommonOptions, options: SubOutdatedOptions) -> i32 {
     println!("Here goes outdated logic");
     0
 }

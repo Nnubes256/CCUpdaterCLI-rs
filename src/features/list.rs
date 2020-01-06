@@ -1,7 +1,7 @@
-use cmd::CLIBaseOptions;
-use cmd::CLISubListOptions;
+use options::CommonOptions;
+use options::SubListOptions;
 
-pub(crate) fn run(top_args: CLIBaseOptions, sub_args: CLISubListOptions) -> i32 {
+pub fn run(common_options: CommonOptions, options: SubListOptions) -> i32 {
     println!("Here goes list logic");
     0
 }
