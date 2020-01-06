@@ -4,10 +4,9 @@ extern crate clap;
 mod cmd;
 mod features;
 
-use std::process;
 use cmd::CLIBaseOptions;
 use cmd::CLISubcommand;
-
+use std::process;
 
 fn main() {
     let top_args = CLIBaseOptions::parse();
@@ -21,7 +20,7 @@ fn main() {
         CLISubcommand::Uninstall(args) => features::uninstall::run(passed_args, args),
         CLISubcommand::Update(args) => features::update::run(passed_args, args),
         CLISubcommand::List(args) => features::list::run(passed_args, args),
-        CLISubcommand::Outdated(args) => features::outdated::run(passed_args, args)
+        CLISubcommand::Outdated(args) => features::outdated::run(passed_args, args),
     };
 
     process::exit(result);

@@ -4,7 +4,7 @@ pub(crate) struct CLIBaseOptions {
     #[clap(long = "game", default_value = ".", help = "Sets the game folder used for operations")]
     pub(crate) game: String,
     #[clap(subcommand)]
-    pub(crate) subcommand: CLISubcommand
+    pub(crate) subcommand: CLISubcommand,
 }
 
 #[derive(Clap, Clone)]
@@ -34,19 +34,19 @@ pub(crate) struct CLISubOutdatedOptions {}
 #[clap(name = "install", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubInstallOptions {
     #[clap(help = "The mods to uninstall")]
-    pub(crate) mods: Vec<String>
+    pub(crate) mods: Vec<String>,
 }
 
 #[derive(Clap, Clone)]
 #[clap(name = "uninstall", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubUninstallOptions {
     #[clap(help = "The mods to uninstall")]
-    pub(crate) mods: Vec<String>
+    pub(crate) mods: Vec<String>,
 }
 
 #[derive(Clap, Clone)]
 #[clap(name = "update", version = "0.1", author = "CCDirectLink Contributors")]
 pub(crate) struct CLISubUpdateOptions {
     #[clap(help = "The mods to uninstall", min_values = 0)]
-    pub(crate) mods: Vec<String>
+    pub(crate) mods: Vec<String>,
 }
