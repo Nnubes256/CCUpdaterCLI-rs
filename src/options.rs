@@ -1,4 +1,4 @@
-#[derive(Clap)]
+#[derive(Debug, Clap)]
 #[clap(version = "0.1", author = "CCDirectLink Contributors")]
 pub struct BaseOptions {
     #[clap(flatten)]
@@ -7,14 +7,13 @@ pub struct BaseOptions {
     pub subcommand: Subcommand,
 }
 
-#[derive(Clap)]
+#[derive(Debug, Clap)]
 pub struct CommonOptions {
     #[clap(long = "game", default_value = ".", help = "Sets the game folder used for operations")]
     pub game: String,
 }
 
-#[derive(Clap)]
-#[clap(version = "0.1", author = "CCDirectLink Contributors")]
+#[derive(Debug, Clap)]
 pub enum Subcommand {
     #[clap(name = "list", about = "List all the mods that the tool knows about")]
     List(SubListOptions),
@@ -22,37 +21,32 @@ pub enum Subcommand {
     Outdated(SubOutdatedOptions),
     #[clap(name = "install", about = "Install one or more mods")]
     Install(SubInstallOptions),
-    #[clap(name = "uninstall", raw(aliases = r#"&["remove"]"#), about = "Uninstall one or more mods")]
+    #[clap(name = "uninstall", visible_alias = "remove", about = "Uninstall one or more mods")]
     Uninstall(SubUninstallOptions),
-    #[clap(name = "update", about = "Update one or more mods")]
+    #[clap(name = "update", visible_alias = "upgrade", about = "Update one or more mods")]
     Update(SubUpdateOptions),
 }
 
-#[derive(Clap)]
-#[clap(name = "list", version = "0.1", author = "CCDirectLink Contributors")]
+#[derive(Debug, Clap)]
 pub struct SubListOptions {}
 
-#[derive(Clap)]
-#[clap(name = "outdated", version = "0.1", author = "CCDirectLink Contributors")]
+#[derive(Debug, Clap)]
 pub struct SubOutdatedOptions {}
 
-#[derive(Clap)]
-#[clap(name = "install", version = "0.1", author = "CCDirectLink Contributors")]
+#[derive(Debug, Clap)]
 pub struct SubInstallOptions {
-    #[clap(help = "The mods to uninstall")]
+    #[clap(help = "The mods to install", required = true)]
     pub mods: Vec<String>,
 }
 
-#[derive(Clap)]
-#[clap(name = "uninstall", version = "0.1", author = "CCDirectLink Contributors")]
+#[derive(Debug, Clap)]
 pub struct SubUninstallOptions {
-    #[clap(help = "The mods to uninstall")]
+    #[clap(help = "The mods to uninstall", required = true)]
     pub mods: Vec<String>,
 }
 
-#[derive(Clap)]
-#[clap(name = "update", version = "0.1", author = "CCDirectLink Contributors")]
+#[derive(Debug, Clap)]
 pub struct SubUpdateOptions {
-    #[clap(help = "The mods to uninstall", min_values = 0)]
+    #[clap(help = "The mods to update")]
     pub mods: Vec<String>,
 }
