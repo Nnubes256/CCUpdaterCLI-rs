@@ -1,7 +1,8 @@
+use super::Result as FeatureResult;
 use options::CommonOptions;
 use options::SubOutdatedOptions;
 
-pub fn run(common_options: CommonOptions, options: SubOutdatedOptions) -> i32 {
+pub fn run(common_options: CommonOptions, options: SubOutdatedOptions) -> FeatureResult<()> {
     println!("Here goes outdated logic");
-    0
+    Ok(())
 }
