@@ -1,7 +1,8 @@
-use cmd::CLIBaseOptions;
-use cmd::CLISubInstallOptions;
+use super::Result as FeatureResult;
+use options::CommonOptions;
+use options::SubInstallOptions;
 
-pub(crate) fn run(top_args: CLIBaseOptions, sub_args: CLISubInstallOptions) -> i32 {
+pub fn run(common_options: CommonOptions, options: SubInstallOptions) -> FeatureResult<()> {
     println!("Here goes install logic");
-    0
+    Ok(())
 }

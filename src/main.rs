@@ -1,28 +1,28 @@
 #[macro_use]
 extern crate clap;
 
-mod cmd;
 mod features;
+mod options;
 
+use features::Result as FeatureResult;
+use options::{BaseOptions, Subcommand};
 use std::process;
-use cmd::CLIBaseOptions;
-use cmd::CLISubcommand;
-
 
 fn main() {
-    let top_args = CLIBaseOptions::parse();
+    let BaseOptions { common_options, subcommand } = BaseOptions::parse();
 
-    println!("Game base path has been set to: {}", top_args.game);
+    println!("Game base path has been set to: {}", common_options.game);
 
-    let passed_args = top_args.clone();
-
-    let result: i32 = match top_args.subcommand {
-        CLISubcommand::Install(args) => features::install::run(passed_args, args),
-        CLISubcommand::Uninstall(args) => features::uninstall::run(passed_args, args),
-        CLISubcommand::Update(args) => features::update::run(passed_args, args),
-        CLISubcommand::List(args) => features::list::run(passed_args, args),
-        CLISubcommand::Outdated(args) => features::outdated::run(passed_args, args)
+    let result: FeatureResult<()> = match subcommand {
+        Subcommand::Install(options) => features::install::run(common_options, options),
+        Subcommand::Uninstall(options) => features::uninstall::run(common_options, options),
+        Subcommand::Update(options) => features::update::run(common_options, options),
+        Subcommand::List(options) => features::list::run(common_options, options),
+        Subcommand::Outdated(options) => features::outdated::run(common_options, options),
     };
 
-    process::exit(result);
+    if let Err(error) = result {
+        println!("ERROR: {}", error);
+        process::exit(1);
+    }
 }

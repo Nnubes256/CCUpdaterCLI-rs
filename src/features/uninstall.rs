@@ -1,7 +1,8 @@
-use cmd::CLIBaseOptions;
-use cmd::CLISubUninstallOptions;
+use super::Result as FeatureResult;
+use options::CommonOptions;
+use options::SubUninstallOptions;
 
-pub(crate) fn run(top_args: CLIBaseOptions, sub_args: CLISubUninstallOptions) -> i32 {
+pub fn run(common_options: CommonOptions, options: SubUninstallOptions) -> FeatureResult<()> {
     println!("Here goes uninstall logic");
-    0
+    Ok(())
 }
